@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ClassicCars{% endblock %}
+
+{% block body %}
+    
+    <div class="container bgg text-warning row mx-auto my-4 bg-dark w-75">
+        <h1 class="col-sm-12 text-center text-white">Classic Cars</h1>
+        <div class="col-sm-6 text-right my-auto mx-auto">
+            <h2>Search your brand!</h2>
+        </div>
+        <div class="col-sm-6 my-auto mx-auto">
+            <form class="form-inline my-2 ml-4">
+                <input type="text" name="search" id="search" placeholder="Search" class="form-control mr-2" >
+                <button class="btn btn-warning my-2 mr-auto" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    <div id="result" class="container row row-cols-1 row-cols-md-2 row-cols-lg-3 mx-auto my-4">
+        {% for classic_car in classic_cars %}
+            <div class='col mb-4'>
+                <div class="card bg-light">
+                    <img src="{{ classic_car.image }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-text">Available: {{ classic_car.available ? '<span class="text-success">Yes<span>' : '<span class="text-danger">No<span>' }}</h5>
+                        <h5 class="card-text">Brand: {{ classic_car.brand }}</h5>
+                        <h5 class="card-text">Price: {{ classic_car.price }} Euro</h5>
+                    </div>  
+                    <div class='card-footer text-center'>
+                        <a class="btn btn-info " href="{{ path('classic_cars_show', {'clsCarsId': classic_car.clsCarsId}) }}">Show more</a>
+                        <a class="btn btn-warning" href="{{ path('classic_cars_edit', {'clsCarsId': classic_car.clsCarsId}) }}">Edit car</a>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <h2>No data found</h2>
+        {% endfor %}
+    </div>
+{% endblock %}

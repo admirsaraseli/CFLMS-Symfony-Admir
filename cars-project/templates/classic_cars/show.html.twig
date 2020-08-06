@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ClassicCars{% endblock %}
+
+{% block body %}
+    <h1>ClassicCars</h1>
+    <div id="result" class="container row row-cols-1 row-cols-md-1 row-cols-lg-2 mx-auto my-4">
+        <div class='col  mb-4 w-50 mx-auto'>
+            <div class="card h-100 mb-3 bg-light">
+                <div class="row">
+                    <div class="col-sm-7">
+                        <img src="{{ classic_car.image }}" class="card-img" alt="...">
+                    </div>
+                    <div class="col-sm-4 p-0">
+                        <div class="card-body p-2 text-center">
+                            <h5 class="card-title">Available: {{ classic_car.available ? 'Yes' : 'No' }}</h5>
+                            <h5 class="card-title">Brand: {{ classic_car.brand }}</h5>
+                            <p class="card-text">Year: {{ classic_car.year }}</p>
+                            <p class="card-text">Price: {{ classic_car.price }} Euro</p>
+                            <p class="card-text">Location: {{ classic_car.location }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class='card-footer text-center'>
+                    <a class="btn btn-dark w-25" href="{{ path('classic_cars_index') }}">Back</a>
+                    <a class="btn btn-warning w-25" href="{{ path('classic_cars_edit', {'clsCarsId': classic_car.clsCarsId}) }}">edit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+{% endblock %}
