@@ -14,7 +14,7 @@
     {% endfor %}
 
     <div class="container mx-auto">
-        <div class="col-sm-7 mx-auto">
+        <div class="rounded-lg col-sm-5 mx-auto p-4 text-info system">
             {{ form_start(registrationForm) }}
                 <h3 class="mb-4 font-weight-normal">Register</h3>
                 {{ form_row(registrationForm.email) }}
@@ -23,8 +23,8 @@
                 }) }}
                 {{ form_row(registrationForm.agreeTerms) }}
 
-                <button type="submit" class="btn btn-lg btn-info mt-4">Register</button>
-                <a href="/login" class="btn btn-lg btn-outline-info mt-4">Sign in</a>
+                <button type="submit" class="btn btn-lg btn-info mt-5">Register</button>
+                <a href="/login" class="btn btn-lg btn-outline-info mt-5">Sign in</a>
             {{ form_end(registrationForm) }}
         </div>
     </div>
